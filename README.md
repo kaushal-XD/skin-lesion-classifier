@@ -1,6 +1,6 @@
 # 🔬 SkinSight — Skin Lesion Classifier
 
-> AI-powered skin lesion analysis prototype using deep learning and LLM-generated medical information cards.
+> AI-powered skin lesion analysis prototype using deep learning and a local disease reference guide.
 
 ![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-009688?logo=fastapi&logoColor=white)
@@ -12,7 +12,7 @@
 SkinSight is a web-based skin lesion classification tool that:
 
 - **Classifies** skin lesion images using a pre-trained **DenseNet121** model (fine-tuned with focal loss)
-- **Generates** structured disease information cards via free LLMs (OpenRouter)
+- **Loads** structured disease information cards from `skin_disease_reference_guide.json` without an API call
 - **Provides** an interactive chat interface to ask follow-up questions about identified conditions
 
 > ⚠️ **Disclaimer**: This tool is for **educational and research purposes only**. It is not a substitute for professional medical diagnosis.
@@ -29,7 +29,7 @@ SkinSight is a web-based skin lesion classification tool that:
 │           FastAPI Backend (server.py)         │
 │                                              │
 │  /api/classify  → Local DenseNet121 model     │
-│  /api/openai/card → OpenRouter (free LLMs)    │
+│  /api/openai/card → Local JSON reference guide │
 │  /api/openai/chat → OpenRouter (free LLMs)    │
 └──────────────────────────────────────────────┘
 ```

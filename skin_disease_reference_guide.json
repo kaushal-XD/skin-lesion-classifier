@@ -1,0 +1,242 @@
+{
+  "disclaimer": "This file is a quick-reference educational aid to accompany the model's classification output. It is NOT a diagnostic tool and does not replace clinical examination, dermoscopy, histopathology, PCR/serology, or specialist referral. Always confirm suspected malignant, viral-outbreak (e.g., mpox), or notifiable conditions through standard clinical and laboratory pathways.",
+
+  "classes": [
+
+    {
+      "sr_no": 1,
+      "class_name": "Actinic Keratoses",
+      "category": "Precancerous",
+      "what_it_is": "A precancerous patch of thick, scaly, or crusty skin caused by cumulative UV (sun) damage to keratinocytes. Considered the earliest stage on a spectrum that can progress to squamous cell carcinoma if untreated.",
+      "cause_how_it_occurs": "Chronic cumulative ultraviolet radiation exposure damaging epidermal keratinocyte DNA; risk increases with age, fair skin, outdoor occupation, and immunosuppression.",
+      "typical_symptoms": [
+        "Rough, dry, sandpaper-like patch, often felt before seen",
+        "Pink, red, or skin-colored lesion, usually <1-2 cm",
+        "Mild tenderness, itching, or burning; usually not painful",
+        "Occurs on chronically sun-exposed sites"
+      ],
+      "how_to_identify": "Look for a scaly, gritty-textured macule/papule on sun-exposed skin (face, scalp in bald men, ears, forearms, dorsal hands, lower lip). Lesions are usually multiple. Dermoscopy shows a 'strawberry pattern' - erythema with prominent follicular openings and fine white scale.",
+      "key_differentiators": "Unlike seborrheic keratosis, AK feels rough/sandpapery rather than 'stuck-on' and waxy. Unlike SCC, AK is flat-to-slightly-raised without induration, ulceration, or rapid growth. Multiple lesions on sun-damaged skin (field cancerization) favor AK over a solitary primary skin cancer.",
+      "red_flags_escalate_if": "Rapid growth, induration/thickening, ulceration, bleeding, or persistent tenderness - suggests progression to invasive SCC and warrants biopsy."
+    },
+
+    {
+      "sr_no": 2,
+      "class_name": "Basal Cell Carcinoma",
+      "category": "Malignant (low metastatic risk)",
+      "what_it_is": "The most common skin cancer, arising from basal cells in the epidermis. Grows slowly and rarely metastasizes, but can cause significant local tissue destruction if untreated.",
+      "cause_how_it_occurs": "Cumulative or intense intermittent UV exposure, fair skin, history of sunburns, immunosuppression, prior radiation, and genetic syndromes (e.g., Gorlin syndrome).",
+      "typical_symptoms": [
+        "Pearly or translucent papule/nodule, often with visible telangiectasias (small blood vessels)",
+        "May have a central depression or ulcer that bleeds and crusts, then partially heals ('rodent ulcer')",
+        "Slow, progressive growth over months to years",
+        "Usually painless"
+      ],
+      "how_to_identify": "Classic nodular BCC: pearly, translucent, rolled/raised border with central ulceration and telangiectasia, most common on the head/neck. Superficial BCC: a flat, scaly, pink-red patch, often on the trunk, can mimic eczema or psoriasis.",
+      "key_differentiators": "The 'pearly rolled border with telangiectasia' is the key feature that separates BCC from benign nevi and seborrheic keratosis. Unlike melanoma, BCC lacks the classic irregular pigment network (it is usually not pigmented, though a pigmented variant exists). Unlike SCC, BCC borders are typically rolled/waxy rather than crusted/keratotic.",
+      "red_flags_escalate_if": "Lesion on the face near the eyes/nose/ears (high-risk for cosmetic/functional damage), or any lesion that bleeds easily, doesn't heal, or is enlarging - biopsy recommended."
+    },
+
+    {
+      "sr_no": 3,
+      "class_name": "Benign Keratosis-like Lesions",
+      "category": "Benign (includes seborrheic keratosis, lichen-planus-like keratosis, solar lentigo)",
+      "what_it_is": "A benign, non-cancerous overgrowth of the outer skin layer (epidermis). The most common subtype is seborrheic keratosis - a 'stuck-on' warty growth common with aging.",
+      "cause_how_it_occurs": "Related to skin aging and, to a lesser degree, sun exposure; has a genetic/familial predisposition. Not caused by a virus and not linked to HPV despite the wart-like look.",
+      "typical_symptoms": [
+        "Waxy, 'stuck-on' appearance, as if pasted onto the skin",
+        "Brown, black, or tan color, sometimes verrucous (warty) surface",
+        "Well-demarcated, round or oval shape",
+        "Usually asymptomatic; can occasionally itch or catch on clothing"
+      ],
+      "how_to_identify": "Look for the characteristic waxy, greasy, 'stuck-on' texture with visible horn cysts (small keratin-filled pseudo-cysts) on dermoscopy - the hallmark diagnostic sign. Common on the trunk, face, and scalp in older adults; often multiple.",
+      "key_differentiators": "The 'stuck-on' look and horn cysts on dermoscopy distinguish it from melanoma and pigmented BCC. Unlike actinic keratosis, it is not rough/sandpapery and is not premalignant. Rapid eruption of many new lesions (Leser-Trelat sign) can rarely signal internal malignancy and should not be ignored.",
+      "red_flags_escalate_if": "Sudden change in color/shape, bleeding, or a lesion that doesn't show clear horn cysts on dermoscopy - biopsy to rule out melanoma or pigmented BCC."
+    },
+
+    {
+      "sr_no": 4,
+      "class_name": "Chickenpox",
+      "category": "Viral infection (Varicella-Zoster Virus)",
+      "what_it_is": "A highly contagious primary infection with varicella-zoster virus (VZV), typically affecting children, causing a generalized itchy vesicular rash.",
+      "cause_how_it_occurs": "Airborne/droplet spread or direct contact with vesicle fluid from an infected person; incubation period roughly 10-21 days.",
+      "typical_symptoms": [
+        "Itchy rash starting as red macules, progressing rapidly (within hours) to papules then thin-walled vesicles ('dew drop on a rose petal')",
+        "Lesions appear in successive crops, so multiple stages (macule, vesicle, crust) are visible at the same time and same body area",
+        "Rash is denser on the trunk and face, sparser on limbs (centripetal distribution)",
+        "Mild fever, malaise, often preceding or accompanying the rash"
+      ],
+      "how_to_identify": "Look for crops of small, superficial, thin-walled vesicles on an erythematous base, concentrated on the trunk/face, with lesions of different ages (macule/papule/vesicle/crust) present simultaneously in the same area - the classic 'polymorphic' or 'starry sky' pattern.",
+      "key_differentiators": "Trunk-predominant (centripetal) distribution and lesions rarely on palms/soles differentiates it from monkeypox and smallpox, which are centrifugal (denser on face/extremities/palms/soles) with more synchronous, monomorphic lesions. Chickenpox lesions are also thinner-walled, less painful, and more pruritic than mpox lesions. Absence of prominent lymphadenopathy also favors chickenpox over mpox.",
+      "red_flags_escalate_if": "Rash in an immunocompromised patient, pregnant woman, neonate, or adult - higher risk of complications (pneumonia, encephalitis); or if lesions are deep, monomorphic, and involve palms/soles with marked lymph node swelling, consider mpox instead."
+    },
+
+    {
+      "sr_no": 5,
+      "class_name": "Cowpox",
+      "category": "Viral infection (Orthopoxvirus, zoonotic)",
+      "what_it_is": "A rare zoonotic infection caused by cowpox virus (an Orthopoxvirus), typically acquired from infected cats, rodents, or occasionally cattle. Usually causes localized skin lesions rather than a widespread rash.",
+      "cause_how_it_occurs": "Direct contact with infected animals (commonly domestic cats, also rodents/cattle), usually via a scratch or bite; short incubation of about 2-4 days before local lesion onset; mainly reported in Europe.",
+      "typical_symptoms": [
+        "Single or few localized lesions (not typically widespread), usually at site of animal contact - often hands, face, or forearm",
+        "Lesion progresses macule to papule to a large, firm, deep-seated vesicle/pustule that can ulcerate and crust",
+        "Marked local swelling, redness, and pain around the lesion",
+        "Fever, malaise, and regional lymphadenopathy in more severe cases"
+      ],
+      "how_to_identify": "Key clue is a history of recent contact with a cat or rodent, combined with one or a few (not disseminated) deep, firm, painful lesions typically on an exposed body part, evolving slowly over 2-4 weeks and often leaving a scar.",
+      "key_differentiators": "Unlike chickenpox and mpox, cowpox lesions are usually localized/few rather than a widespread rash, and there is almost always a clear animal-contact history. Compared to mpox, cowpox has a much shorter incubation (2-4 days vs 5-21 days) and lesions are typically confined to the contact site rather than centrifugally distributed body-wide.",
+      "red_flags_escalate_if": "Lesion in an immunocompromised patient (can cause severe, disseminated disease) or spreading beyond the initial contact site - needs prompt specialist/infectious disease input."
+    },
+
+    {
+      "sr_no": 6,
+      "class_name": "Dermatofibroma",
+      "category": "Benign",
+      "what_it_is": "A common benign fibrous skin nodule thought to arise from a reactive proliferation of fibroblasts/histiocytes, often following minor trauma such as an insect bite or ingrown hair.",
+      "cause_how_it_occurs": "Exact cause unclear; often follows minor local trauma or insect bite; more common in women and on the lower legs.",
+      "typical_symptoms": [
+        "Firm, small (usually <1 cm) nodule, most common on the lower legs",
+        "Tan, pink, or brown in color",
+        "Usually asymptomatic, but may itch or be tender to pressure"
+      ],
+      "how_to_identify": "The hallmark clinical sign is the 'dimple sign' (Fitzpatrick sign): lateral pinching of the lesion causes it to dimple inward due to tethering to underlying tissue - this is very specific for dermatofibroma.",
+      "key_differentiators": "The positive dimple sign reliably separates dermatofibroma from melanoma and other pigmented nevi, which do not dimple. On dermoscopy, dermatofibroma classically shows a central white patch (scar-like area) with a peripheral pigment network, unlike the irregular, multicomponent pattern of melanoma.",
+      "red_flags_escalate_if": "Rapid growth, ulceration, or a negative/atypical dimple sign with irregular pigmentation - biopsy to rule out dermatofibrosarcoma protuberans or melanoma."
+    },
+
+    {
+      "sr_no": 7,
+      "class_name": "Healthy",
+      "category": "Normal skin (reference class)",
+      "what_it_is": "Normal, unaffected skin used as the baseline/reference class so the model can flag when no pathology is present.",
+      "cause_how_it_occurs": "N/A - represents skin without an active dermatological condition.",
+      "typical_symptoms": [
+        "No abnormal pigmentation, texture change, or lesion",
+        "Uniform color and texture appropriate for the patient's skin type"
+      ],
+      "how_to_identify": "Absence of any of the features described for the other 13 classes (no scale, no ulceration, no asymmetric pigmented lesion, no vesicles/pustules).",
+      "key_differentiators": "Used clinically as a sanity check - if the model predicts 'Healthy' but the referring clinician has already identified a visible lesion, this should prompt manual re-review rather than automatic reassurance, since it likely reflects poor image quality, framing, or a lesion type outside the model's training distribution.",
+      "red_flags_escalate_if": "Clinician-identified lesion present despite a 'Healthy' prediction - do not rely on the model in that scenario; examine directly."
+    },
+
+    {
+      "sr_no": 8,
+      "class_name": "HFMD",
+      "category": "Viral infection (Hand-Foot-and-Mouth Disease; Coxsackievirus/Enterovirus)",
+      "what_it_is": "A common, usually mild viral illness caused by Coxsackievirus A16 or Enterovirus 71, mainly affecting young children, causing sores in the mouth and a rash on the hands and feet.",
+      "cause_how_it_occurs": "Fecal-oral or respiratory droplet transmission, and contact with vesicle fluid; common in daycare/school settings; incubation roughly 3-6 days.",
+      "typical_symptoms": [
+        "Painful oral ulcers/sores (mouth, tongue, gums) often preceding skin lesions",
+        "Small, oval, gray-white vesicles with a red halo on the palms, soles, and sometimes buttocks/knees",
+        "Low-grade fever, sore throat, reduced appetite/poor feeding in children",
+        "Rash usually not itchy, unlike chickenpox"
+      ],
+      "how_to_identify": "Look for the classic triad: oral ulcers plus vesicular/papular lesions specifically on the palms and soles (acral distribution) in a young child with mild fever - a very distinctive combination.",
+      "key_differentiators": "The palms/soles + mouth-ulcer combination is fairly specific to HFMD and differs from chickenpox (trunk-predominant, sparing palms/soles) and from mpox/cowpox (which lack the characteristic oral ulcer + acral rash combination and typically show more prominent lymphadenopathy and systemic prodrome).",
+      "red_flags_escalate_if": "High fever, lethargy, poor feeding, neurological signs (irritability, ataxia, myoclonus) - can indicate rare but serious Enterovirus 71-associated neurological complications; requires urgent referral."
+    },
+
+    {
+      "sr_no": 9,
+      "class_name": "Measles",
+      "category": "Viral infection (Measles morbillivirus)",
+      "what_it_is": "A highly contagious viral illness causing fever, cough, conjunctivitis, and a characteristic descending maculopapular rash; a vaccine-preventable disease.",
+      "cause_how_it_occurs": "Airborne transmission (one of the most contagious known pathogens); incubation roughly 10-14 days before rash onset.",
+      "typical_symptoms": [
+        "Prodrome of high fever, cough, coryza (runny nose), and conjunctivitis (the '3 C's') for 2-4 days before rash",
+        "Koplik spots - small white/blue-gray spots on a red base inside the cheeks - appear 1-2 days before the skin rash and are pathognomonic",
+        "Maculopapular (blotchy, flat-to-slightly-raised) rash starting on the face/hairline and spreading downward to the trunk and limbs over several days (cephalocaudal/descending spread)",
+        "Rash does not typically vesiculate (stays flat/maculopapular, unlike chickenpox or mpox)"
+      ],
+      "how_to_identify": "The combination of high fever + 3 C's (cough, coryza, conjunctivitis) + Koplik spots + a descending maculopapular (non-vesicular) rash is the classic and most reliable identifying pattern.",
+      "key_differentiators": "Measles rash is flat/maculopapular and does NOT progress to vesicles/pustules, unlike chickenpox, mpox, and cowpox. Koplik spots are unique to measles and not seen in any of the other 13 classes. Rash spread is descending (face to feet) rather than the more uniform/centrifugal patterns of the pox-family viruses.",
+      "red_flags_escalate_if": "Any suspected case - measles is a notifiable disease in most countries; report to public health authorities immediately and isolate the patient given extreme contagiousness, especially around unvaccinated infants and immunocompromised individuals."
+    },
+
+    {
+      "sr_no": 10,
+      "class_name": "Melanocytic Nevi",
+      "category": "Benign (common mole)",
+      "what_it_is": "A common benign proliferation of melanocytes (pigment-producing cells), i.e., an ordinary mole. The vast majority never become cancerous, but they are the tissue of origin for melanoma.",
+      "cause_how_it_occurs": "Combination of genetic predisposition and UV exposure; nevi typically appear in childhood/adolescence and can evolve slowly over decades.",
+      "typical_symptoms": [
+        "Well-defined, symmetric, round/oval lesion",
+        "Uniform color - typically a single shade of tan, brown, or black",
+        "Stable size and shape over time",
+        "Usually asymptomatic"
+      ],
+      "how_to_identify": "Apply the ABCDE rule as a screening framework: Asymmetry (absent), Border (regular/well-defined), Color (uniform, single shade), Diameter (usually <6mm, though not absolute), Evolution (stable, not changing). A typical nevus satisfies the 'benign' side of all five criteria.",
+      "key_differentiators": "The key differentiator from melanoma is symmetry, border regularity, and color uniformity - any ONE of these being violated (especially evolution/change over time) should raise suspicion for melanoma and prompt dermoscopy/biopsy. Unlike dermatofibroma, a nevus does not dimple on lateral pinching.",
+      "red_flags_escalate_if": "New asymmetry, irregular/notched border, multiple colors within one lesion, diameter growth, or any reported change in size/shape/color/itch/bleeding ('ABCDE positive' or the 'ugly duckling' sign relative to the patient's other moles) - biopsy to rule out melanoma."
+    },
+
+    {
+      "sr_no": 11,
+      "class_name": "Melanoma",
+      "category": "Malignant (high metastatic potential)",
+      "what_it_is": "The most dangerous form of skin cancer, arising from malignant transformation of melanocytes. Early detection dramatically improves prognosis, while advanced/metastatic melanoma has a much lower survival rate - making this the single highest-stakes class for the model to correctly flag.",
+      "cause_how_it_occurs": "UV exposure (especially intense intermittent/sunburn history), fair skin, high nevus count, family/personal history, and immunosuppression are major risk factors.",
+      "typical_symptoms": [
+        "A new pigmented lesion or a change in an existing mole",
+        "Asymmetric shape with an irregular, notched, or blurred border",
+        "Multiple colors within the same lesion (black, brown, tan, red, white, or blue)",
+        "Diameter often, but not always, greater than 6mm",
+        "Evolving: changing size, shape, color, or new symptoms (itching, bleeding, crusting) over weeks to months"
+      ],
+      "how_to_identify": "Apply the full ABCDE rule (Asymmetry, Border irregularity, Color variegation, Diameter >6mm, Evolution) plus the 'ugly duckling sign' - a lesion that looks visibly different from the patient's other moles. Dermoscopy typically shows an irregular/atypical pigment network, blue-white veil, or irregular streaks.",
+      "key_differentiators": "Differs from melanocytic nevi and benign keratosis by failing multiple ABCDE criteria simultaneously, especially evolution/change and color variegation. Differs from pigmented BCC by lacking the pearly rolled border/telangiectasia, and from dermatofibroma by a negative dimple sign and irregular (not scar-like) dermoscopic pattern.",
+      "red_flags_escalate_if": "ANY model prediction of melanoma, regardless of confidence score, should trigger prompt dermatologist referral and, where available, dermoscopic and histopathological confirmation - false negatives here carry the highest clinical cost of all 14 classes."
+    },
+
+    {
+      "sr_no": 12,
+      "class_name": "Monkeypox",
+      "category": "Viral infection (Mpox virus, Orthopoxvirus, zoonotic/emerging)",
+      "what_it_is": "A zoonotic Orthopoxvirus infection (also referred to as mpox) causing a distinctive vesiculopustular rash, historically endemic to Central/West Africa but with wider outbreaks in recent years.",
+      "cause_how_it_occurs": "Transmission via close contact with infected humans or animals (rodents, primates), respiratory droplets, contact with lesion material/fomites, or sexual/intimate contact; incubation typically 5-21 days.",
+      "typical_symptoms": [
+        "Febrile prodrome (fever, headache, muscle aches, exhaustion) often preceding the rash by 1-4 days",
+        "Prominent lymphadenopathy (swollen lymph nodes - cervical, submandibular, or inguinal) - a key distinguishing feature from chickenpox and smallpox",
+        "Deep-seated, firm, well-circumscribed lesions progressing synchronously through macule -> papule -> vesicle -> pustule (often with central umbilication) -> crust over about 2-4 weeks",
+        "Rash frequently involves the face, palms, and soles, and can involve the genital/perianal area"
+      ],
+      "how_to_identify": "The combination of a febrile prodrome, marked lymphadenopathy, and a rash with synchronous (same-stage), deep, firm, often umbilicated lesions concentrated on the face/extremities/palms/soles is the classic identifying pattern, per CDC/WHO differential guidance.",
+      "key_differentiators": "Lymphadenopathy is the single most reliable feature separating mpox from both chickenpox and smallpox (neither typically causes prominent lymphadenopathy). Compared to chickenpox, mpox lesions are more synchronous/monomorphic (same stage together) rather than appearing in successive crops of mixed-stage lesions, and are more painful and deep-seated. Compared to cowpox, mpox has a longer incubation and a body-wide (centrifugal) rather than localized/contact-site distribution.",
+      "red_flags_escalate_if": "Suspected mpox is a public-health-reportable condition in most jurisdictions - isolate the patient, use PPE, and confirm with lesion-based PCR; do not rely on visual/model classification alone for outbreak-relevant conditions."
+    },
+
+    {
+      "sr_no": 13,
+      "class_name": "Squamous Cell Carcinoma",
+      "category": "Malignant (moderate metastatic risk)",
+      "what_it_is": "The second most common skin cancer, arising from malignant keratinocytes. More aggressive than BCC, with a higher (though still generally low) risk of metastasis, particularly on the lip, ear, and in immunosuppressed patients.",
+      "cause_how_it_occurs": "Cumulative UV exposure, often arising from a pre-existing actinic keratosis; also linked to chronic wounds/scars, HPV infection, immunosuppression, and prior radiation.",
+      "typical_symptoms": [
+        "Firm, indurated (hard) papule, plaque, or nodule with a scaly, crusted, or keratotic surface",
+        "May ulcerate, bleed, or fail to heal",
+        "Can be tender or painful, unlike most benign lesions",
+        "Grows faster than BCC - typically over weeks to a few months"
+      ],
+      "how_to_identify": "Look for a hyperkeratotic (thick, scaly, wart-like), indurated lesion, often ulcerated, on chronically sun-exposed skin (face, ears, lips, dorsal hands) or arising within a pre-existing actinic keratosis.",
+      "key_differentiators": "Unlike BCC's pearly rolled border, SCC has a rougher, more keratotic/crusted surface and is typically firmer/harder on palpation (induration). Unlike actinic keratosis, SCC shows true induration, possible ulceration, and faster growth, marking invasion beyond the superficial epidermis.",
+      "red_flags_escalate_if": "Lesion on the lip, ear, or in an immunosuppressed/transplant patient (higher metastatic risk), rapid growth, deep induration, or associated regional lymphadenopathy - urgent biopsy and staging workup."
+    },
+
+    {
+      "sr_no": 14,
+      "class_name": "Vascular Lesions",
+      "category": "Benign (includes hemangioma, angioma, pyogenic granuloma, port-wine stain)",
+      "what_it_is": "A group of benign lesions arising from blood vessels or their proliferation, ranging from congenital birthmarks (port-wine stains, hemangiomas) to acquired lesions (cherry angiomas, pyogenic granulomas).",
+      "cause_how_it_occurs": "Varies by subtype: hemangiomas result from abnormal proliferation of vascular endothelial cells (often congenital, common in infants); cherry angiomas increase with age; pyogenic granulomas often follow minor trauma or occur during pregnancy (hormonally driven).",
+      "typical_symptoms": [
+        "Red, purple, or blue coloration due to underlying blood vessels",
+        "May be flat (port-wine stain) or raised/nodular (hemangioma, pyogenic granuloma, cherry angioma)",
+        "Blanches (turns pale) partially or fully with pressure, unlike most pigmented lesions",
+        "Pyogenic granulomas may bleed easily with minor trauma due to fragile, friable vessels"
+      ],
+      "how_to_identify": "The blanch test is key: press on the lesion with a glass slide (diascopy) - a vascular lesion will visibly blanch/lighten because it is composed of blood-filled vessels, whereas a pigmented lesion (nevus, melanoma) will not.",
+      "key_differentiators": "Blanching on diascopy reliably separates vascular lesions from pigmented lesions (nevi, melanoma) and from vascular-appearing melanoma (which does not blanch). The color (red/purple/blue vs brown/black) also helps distinguish these from the melanocytic and keratinocytic classes above.",
+      "red_flags_escalate_if": "A rapidly growing 'vascular-looking' lesion that does NOT blanch, or one that bleeds spontaneously and is enlarging rapidly (particularly in an adult, where pyogenic-granuloma-like lesions are less common than in pregnancy) - biopsy to exclude amelanotic melanoma or other malignancy."
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 """
 SkinSight Backend Server
 Pre-loads DenseNet121-focal-loss-v2 model at startup for fast inference.
-LLM calls (disease cards + chat) are proxied through OpenRouter — free, no user key needed.
+Disease cards are loaded locally from skin_disease_reference_guide.json;
+only the follow-up chat is proxied through OpenRouter.
 """
 
 import io
@@ -28,36 +29,53 @@ from torchvision import transforms
 # ============================================================================
 # CONFIG
 # ============================================================================
-HF_MODEL_ID   = "KaushalXD/DenseNet121-focal-loss-v2"
-HF_MODEL_NAME = "DenseNet121 (Focal Loss v2)"
+HF_MODEL_ID   = "KaushalXD/ViT-Large-focal-loss_v1"
+HF_MODEL_NAME = "ViT-Large (Focal Loss v1)"
 DEVICE        = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-# OpenRouter config  — key is server-side only, never exposed to the browser
-# Load from .env file if python-dotenv is available
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except ImportError:
-    pass  # python-dotenv is optional — user can set env vars manually
+# EasyCLIProxyAPI config — local proxy running at http://127.0.0.1:8317
+# Key is server-side only, never exposed to the browser
+# Load from .env file directly so it works even if python-dotenv is not installed
+env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+if os.path.exists(env_path):
+    try:
+        with open(env_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    key, val = line.split("=", 1)
+                    os.environ.setdefault(key.strip(), val.strip())
+    except Exception as e:
+        print(f"[SkinSight] Could not read .env: {e}")
 
-OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
-OPENROUTER_URL     = "https://openrouter.ai/api/v1/chat/completions"
-OPENROUTER_MODEL   = "deepseek/deepseek-v4-flash:free"          # primary (large context, fast)
+# Read the API key from .env (the "First key" shown in EasyCLIProxyAPI dashboard)
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "123456")
+if not OPENROUTER_API_KEY:
+    OPENROUTER_API_KEY = "123456"
+
+# EasyCLIProxyAPI exposes an OpenAI-compatible API at /v1
+OPENROUTER_URL  = "http://127.0.0.1:8317/v1/chat/completions"
+
+# Primary model — Claude is best for medical context with Antigravity OAuth
+OPENROUTER_MODEL = "claude-sonnet-4-6"          # primary
 # Fallback chain — tried in order if primary is rate-limited (429) or unavailable (404)
+# These are the EXACT model IDs returned by http://127.0.0.1:8317/v1/models
 OPENROUTER_FALLBACKS = [
-    "meta-llama/llama-3.3-70b-instruct:free",
-    "google/gemma-4-31b-it:free",
-    "qwen/qwen3-coder:free",
-    "nousresearch/hermes-3-llama-3.1-405b:free",
-    "nvidia/nemotron-3-super-120b-a12b:free",
-    "openai/gpt-oss-20b:free",
-    "openai/gpt-oss-120b:free",
-    "meta-llama/llama-3.2-3b-instruct:free",
+    "claude-opus-4-6-thinking",
+    "gemini-3.8-flash-high",
+    "gemini-3.7-flash-high",
+    "gemini-3.6-flash-high",
+    "gemini-3-flash",
+    "gemini-3.1-flash-image",
+    "gemini-pro-agent",
+    "gemini-3.1-pro-low",
+    "gpt-oss-120b-medium",
+    "gemini-3.1-flash-lite",
+    "gemini-3.5-flash-lite",
 ]
 OPENROUTER_HEADERS = {
     "Authorization": f"Bearer {OPENROUTER_API_KEY}",
     "Content-Type": "application/json",
-    "HTTP-Referer": "http://localhost:8001",   # required by OpenRouter
     "X-Title": "SkinSight",
 }
 
@@ -81,6 +99,25 @@ _model.to(DEVICE)
 _model.eval()
 
 print(f"[SkinSight] Model loaded and ready!")
+
+REFERENCE_GUIDE_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "skin_disease_reference_guide.json",
+)
+with open(REFERENCE_GUIDE_PATH, "r", encoding="utf-8") as guide_file:
+    _reference_guide = json.load(guide_file)
+
+
+def normalize_label(label: str) -> str:
+    """Normalize model labels so they match reference-guide class names."""
+    return "".join(character.lower() for character in label if character.isalnum())
+
+
+_reference_by_label = {
+    normalize_label(entry["class_name"]): entry
+    for entry in _reference_guide["classes"]
+}
+print(f"[SkinSight] Loaded {len(_reference_by_label)} disease reference entries.")
 
 # ============================================================================
 # HELPERS
@@ -205,7 +242,7 @@ async def status():
 
 
 # ============================================================================
-# DISEASE INFO CARD  (via OpenRouter — no user API key required)
+# DISEASE INFO CARD  (loaded from the local reference guide)
 # ============================================================================
 class CardRequest(BaseModel):
     label: str
@@ -214,39 +251,20 @@ class CardRequest(BaseModel):
 
 @app.post("/api/openai/card")
 async def openai_card(req: CardRequest):
-    """Generate a disease info card via OpenRouter (free LLM)."""
-    prompt = (
-        f'You are a medical information assistant. The user has uploaded a skin lesion image '
-        f'and the AI model predicted it might be "{req.label}" with {req.confidence:.1f}% confidence.\n\n'
-        f'Generate a concise, structured medical info card for "{req.label}" '
-        f'in the following JSON format ONLY — no markdown, no preamble:\n\n'
-        '{\n'
-        '  "disease": "<full proper disease name>",\n'
-        '  "overview": "<2-3 sentence plain-language overview>",\n'
-        '  "symptoms": ["<symptom 1>", "<symptom 2>", "<symptom 3>", "<symptom 4>"],\n'
-        '  "causes": ["<cause 1>", "<cause 2>", "<cause 3>"],\n'
-        '  "risk_factors": ["<risk factor 1>", "<risk factor 2>", "<risk factor 3>"],\n'
-        '  "precautions": ["<precaution 1>", "<precaution 2>", "<precaution 3>"],\n'
-        '  "when_to_see_doctor": "<1-2 sentence guidance>",\n'
-        '  "severity": "Low | Medium | High",\n'
-        '  "is_contagious": true | false\n'
-        '}\n\nReturn ONLY valid JSON. No extra text.'
-    )
+    """Return the matching disease entry without making an external API call."""
+    entry = _reference_by_label.get(normalize_label(req.label))
+    if entry is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No reference information found for model label '{req.label}'.",
+        )
 
-    try:
-        text = openrouter_chat([{"role": "user", "content": prompt}], temperature=0.3)
-        text = strip_json_fences(text)
-        print(f"[SkinSight] Card response for '{req.label}':\n{text[:300]}")
-        return json.loads(text)
-
-    except json.JSONDecodeError as e:
-        print(f"[SkinSight] JSON parse error: {e}\nRaw: {text[:300]}")
-        raise HTTPException(status_code=500, detail=f"Model returned invalid JSON: {e}")
-    except HTTPException:
-        raise
-    except Exception as e:
-        import traceback; traceback.print_exc()
-        raise HTTPException(status_code=500, detail=str(e))
+    return {
+        **entry,
+        "predicted_label": req.label,
+        "confidence": req.confidence,
+        "disclaimer": _reference_guide["disclaimer"],
+    }
 
 
 # ============================================================================

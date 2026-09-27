@@ -578,7 +578,7 @@
         <span style="background:var(--teal);color:#fff;padding:5px 14px;border-radius:20px;font-size:.85rem;font-weight:600">🧠 DenseNet121 (Focal Loss v2)</span>
         <span id="backend-status" style="font-size:.8rem;color:#999">⏳ Checking backend...</span>
       </div>
-      <p style="font-size:.82rem;color:var(--teal);margin-top:10px">🖥️ Classification runs locally · Disease cards &amp; chat powered by <strong>OpenRouter</strong> (free — no API key needed).</p>
+      <p style="font-size:.82rem;color:var(--teal);margin-top:10px">🖥️ Classification and disease reference cards run locally · Follow-up chat powered by <strong>OpenRouter</strong>.</p>
     </div>
 
     <!-- PANEL 2: UPLOAD & INFERENCE -->
@@ -687,7 +687,7 @@
       const chatPanel = $('chat-panel'), chatWindow = $('chat-window');
       const chatInput = $('chat-input'), chatSend = $('chat-send'), chatClear = $('chat-clear');
 
-      const API_BASE = window.location.origin;
+      const API_BASE = (window.location.origin && window.location.origin.startsWith('http')) ? window.location.origin : 'http://localhost:8001';
 
       // ============================================================
       // UPLOAD
@@ -802,14 +802,14 @@
       }
 
       // ============================================================
-      // DISEASE CARDS  (FIX: passes key in X-OpenAI-Key header)
+      // DISEASE CARDS  (loaded from the local reference guide)
       // ============================================================
       async function generateCards(preds) {
         cardsPanel.classList.remove('hidden');
         cardsSkeleton.classList.remove('hidden');
         cardsContainer.innerHTML = '';
 
-        const promises = preds.map((p, i) => callOpenAICard(p, i));
+        const promises = preds.map((p, i) => callReferenceCard(p, i));
         const results = await Promise.allSettled(promises);
 
         cardsSkeleton.classList.add('hidden');
@@ -836,7 +836,7 @@
         analyzeBtn.disabled = false;
       }
 
-      async function callOpenAICard(pred, index) {
+      async function callReferenceCard(pred, index) {
         const conf = pred.score * 100;
         const res = await fetch(`${API_BASE}/api/openai/card`, {
           method: 'POST',
@@ -853,28 +853,25 @@
       }
 
       function renderCard(info, index, pred) {
-        const sevClass = info.severity === 'High' ? 'badge-high' : info.severity === 'Medium' ? 'badge-medium' : 'badge-low';
         const conf = (pred.score * 100).toFixed(1);
-        const contagiousBadge = info.is_contagious ? '<span class="badge badge-contagious">Contagious</span>' : '';
         const pills = arr => (arr || []).map(x => `<span class="pill">${x}</span>`).join('');
 
         cardsContainer.innerHTML += `
   <div class="disease-card">
     <div class="card-header">
       <div>
-        <h3>${info.disease}</h3>
+        <h3>${info.class_name}</h3>
         <span class="badge badge-rank">#${index + 1} · ${conf}%</span>
-        <span class="badge ${sevClass}">${info.severity} Severity</span>
-        ${contagiousBadge}
+        <span class="badge badge-medium">${info.category}</span>
       </div>
     </div>
     <div class="card-body">
-      <p class="card-overview">${info.overview}</p>
-      <div class="card-section"><div class="card-section-title">🔴 Symptoms</div>${pills(info.symptoms)}</div>
-      <div class="card-section"><div class="card-section-title">⚡ Causes</div>${pills(info.causes)}</div>
-      <div class="card-section"><div class="card-section-title">⚠️ Risk Factors</div>${pills(info.risk_factors)}</div>
-      <div class="card-section"><div class="card-section-title">🛡️ Precautions</div>${pills(info.precautions)}</div>
-      <div class="doctor-box">🩺 <strong>When to see a doctor:</strong> ${info.when_to_see_doctor}</div>
+      <p class="card-overview">${info.what_it_is}</p>
+      <div class="card-section"><div class="card-section-title">🔴 Typical symptoms</div>${pills(info.typical_symptoms)}</div>
+      <div class="card-section"><div class="card-section-title">⚡ Cause and how it occurs</div><p class="card-overview">${info.cause_how_it_occurs}</p></div>
+      <div class="card-section"><div class="card-section-title">🔎 How to identify</div><p class="card-overview">${info.how_to_identify}</p></div>
+      <div class="card-section"><div class="card-section-title">↔️ Key differentiators</div><p class="card-overview">${info.key_differentiators}</p></div>
+      <div class="doctor-box">🩺 <strong>Escalate for medical care if:</strong> ${info.red_flags_escalate_if}</div>
     </div>
   </div>`;
       }
